@@ -33,7 +33,7 @@ class Linkedin extends Base{
 	}
 	
 	public function getSocialLoginUrl(){
-		return $this->linkedinApi->getLoginUrl([LinkedIn::SCOPE_BASIC_PROFILE, LinkedIn::SCOPE_EMAIL_ADDRESS]);
+		return $this->linkedinApi->getLoginUrl([\LinkedIn\LinkedIn::SCOPE_BASIC_PROFILE, \LinkedIn\LinkedIn::SCOPE_EMAIL_ADDRESS]);
 	}
 	
 	/**
