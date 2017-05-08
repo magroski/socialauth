@@ -1,5 +1,5 @@
 {
-    "name": "tfy/social-auth",
+    "name": "tfy/SocialAuth",
     "description": "Talentify simple social authentication library",
     "type": "library",
     "license": "proprietary",
@@ -10,7 +10,7 @@
         }
     ],
     "dist":{
-        "url": "git@github.com:talentify/frogg.git",
+        "url": "git@github.com:talentify/SocialAuth.git",
         "type": "git"
     },
     "autoload": {
