@@ -51,8 +51,8 @@ class Wrapper{
 		return $this->socialObject->login();
 	}
 	
-	public function getSocialLoginUrl(string $redirectUrl){
-		return $this->socialObject->getSocialLoginUrl($redirectUrl);
+	public function getSocialLoginUrl(){
+		return $this->socialObject->getSocialLoginUrl();
 	}
 	
 	public function getProfile(){
