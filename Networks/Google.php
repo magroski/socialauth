@@ -12,26 +12,27 @@ class Google extends Base{
 	 * @var \Google_Client
 	 */
 	protected $googleApi;
-	protected $accessToken;
 	
 	/**
 	 *
-	 * @param array $configs - ['key' => '', 'secret' => '']
+	 * @param array $configs - ['key' => '', 'secret' => '', 'callback' => 'CALLBACK URL']
 	 * @throws \Exception
 	 */
 	public function __construct(array $configs){
 		if(!isset($configs['key']) || !isset($configs['secret'])){
 			throw new \Exception('The configuration array does not contain the element(s) "key" and/or "secret"');
 		}
-	
+		
+		$this->callbackUrl = $configs['callback'];
+		
 		$this->googleApi = new \Google_Client([
 			'client_id'		=> $configs['key'],
 			'client_secret'	=> $configs['secret'],
 		]);
 	}
 	
-	public function getSocialLoginUrl(string $redirectUrl){
-		$this->googleApi->setRedirectUri($redirectUrl);
+	public function getSocialLoginUrl(){
+		$this->googleApi->setRedirectUri($this->callbackUrl);
 		return $this->googleApi->createAuthUrl();
 	}
 	

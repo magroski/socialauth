@@ -12,7 +12,6 @@ class Facebook extends Base{
 	 * @var \Facebook\Facebook
 	 */
 	protected $facebookApi;
-	protected $accessToken;
 	
 	/**
 	 * 
@@ -24,6 +23,8 @@ class Facebook extends Base{
 			throw new \Exception('The configuration array does not contain the element(s) "key" and/or "secret"');
 		}
 		
+		$this->callbackUrl = $configs['callback'];
+		
 		$this->facebookApi = new \Facebook\Facebook([
 		  'app_id' => $configs['key'],
 		  'app_secret' => $configs['secret'],
@@ -31,10 +32,10 @@ class Facebook extends Base{
 		]);
 	}
 	
-	public function getSocialLoginUrl(string $redirectUrl){
+	public function getSocialLoginUrl(){
 		$helper = $this->facebookApi->getRedirectLoginHelper();
 		$permissions = ['email'];
-		return $helper->getLoginUrl($redirectUrl, $permissions);
+		return $helper->getLoginUrl($this->callbackUrl, $permissions);
 	}
 	
 	/**

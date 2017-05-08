@@ -2,7 +2,7 @@
 
 namespace SocialAuth\Networks;
 
-use Happyr\LinkedIn\LinkedIn;
+use LinkedIn\LinkedIn;
 
 /**
  * This class is used to encapsulate the calls for each specific social network 
@@ -14,7 +14,6 @@ class Linkedin extends Base{
 	 * @var LinkedIn
 	 */
 	protected $linkedinApi;
-	protected $accessToken;
 	
 	/**
 	 *
@@ -25,12 +24,18 @@ class Linkedin extends Base{
 		if(!isset($configs['key']) || !isset($configs['secret'])){
 			throw new \Exception('The configuration array does not contain the element(s) "key" and/or "secret"');
 		}
-	
-		$this->linkedinApi = new LinkedIn($configs['key'], $configs['secret']);
+		
+		$this->callbackUrl = $configs['callback'];
+		
+		$this->linkedinApi = new LinkedIn([
+			'api_key' => $configs['key'],
+			'api_secret' => $configs['secret'],
+			'callback_url' => $configs['callback']
+		]);
 	}
 	
-	public function getSocialLoginUrl(string $redirectUrl){
-		return $this->linkedinApi->getLoginUrl(['redirect_uri'=>$redirectUrl]);
+	public function getSocialLoginUrl(){
+		return $this->linkedinApi->getLoginUrl([LinkedIn::SCOPE_BASIC_PROFILE, LinkedIn::SCOPE_EMAIL_ADDRESS]);
 	}
 	
 	/**
@@ -39,11 +44,12 @@ class Linkedin extends Base{
 	 * @see \SocialAuth\Networks\Base::login()
 	 */
 	public function login(){
-		$this->linkedinApi->isAuthenticated();
+		$token = $li->getAccessToken($_REQUEST['code']);
+		$this->linkedinApi->setAccessToken($token);
 	}
 	
 	public function getProfile(){
-		$user = $this->linkedinApi->get('v1/people/~:(id,first-name,last-name,picture-url,public-profile-url,email-address)');
+		$user = $this->linkedinApi->get('/people/~:(id,first-name,last-name,picture-url,public-profile-url,email-address)');
 
 		$data = ['social_id'=>$user['id']];
 		

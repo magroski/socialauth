@@ -22,6 +22,6 @@
     "require": {
     	"facebook/graph-sdk" : "~5.0",
         "google/apiclient": "2.0",
-        "happyr/linkedin-api-client": "^1.0"
+        "linkedinapi/linkedin": "^1.1"
     }
 }
