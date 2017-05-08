@@ -22,7 +22,6 @@
     "require": {
     	"facebook/graph-sdk" : "~5.0",
         "linkedinapi/linkedin": "^1.1",
-        "google/apiclient": "^2.1",
-        "aws/aws-sdk-php": "^3.27"
+        "google/apiclient": "^2.1"
     }
 }
