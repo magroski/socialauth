@@ -2,8 +2,6 @@
 
 namespace SocialAuth\Networks;
 
-use LinkedIn\LinkedIn;
-
 /**
  * This class is used to encapsulate the calls for each specific social network 
  */
@@ -11,7 +9,7 @@ class Linkedin extends Base{
 
 	/**
 	 *
-	 * @var LinkedIn
+	 * @var \LinkedIn\LinkedIn
 	 */
 	protected $linkedinApi;
 	
@@ -27,7 +25,7 @@ class Linkedin extends Base{
 		
 		$this->callbackUrl = $configs['callback'];
 		
-		$this->linkedinApi = new LinkedIn([
+		$this->linkedinApi = new \LinkedIn\LinkedIn([
 			'api_key' => $configs['key'],
 			'api_secret' => $configs['secret'],
 			'callback_url' => $configs['callback']
