@@ -1,0 +1,29 @@
+{
+    "name": "tfy/social-auth",
+    "description": "Talentify simple social authentication library",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Tasso Gama",
+            "email": "tasso@talentify.io"
+        }
+    ],
+    "dist":{
+        "url": "git@github.com:talentify/frogg.git",
+        "type": "git"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialAuth\\": "/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+    	"facebook/graph-sdk" : "~5.0",
+        "google/apiclient": "2.0",
+        "php-http/curl-client": "^1.7",
+        "php-http/message": "^1.5",
+        "happyr/linkedin-api-client": "^1.0"
+    }
+}
