@@ -21,7 +21,8 @@
     "minimum-stability": "stable",
     "require": {
     	"facebook/graph-sdk" : "~5.0",
-        "google/apiclient": "2.0",
-        "linkedinapi/linkedin": "^1.1"
+        "linkedinapi/linkedin": "^1.1",
+        "google/apiclient": "^2.1",
+        "aws/aws-sdk-php": "^3.27"
     }
 }
