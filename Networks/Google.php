@@ -33,7 +33,7 @@ class Google extends Base{
 	
 	public function getSocialLoginUrl(){
 		$this->googleApi->setRedirectUri($this->callbackUrl);
-		return $this->googleApi->createAuthUrl(['https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email']);
+		return $this->googleApi->createAuthUrl(['https://www.googleapis.com/auth/plus.me','https://www.googleapis.com/auth/userinfo.email']);
 	}
 	
 	/**
@@ -42,14 +42,17 @@ class Google extends Base{
 	 * @see \SocialAuth\Networks\Base::login()
 	 */
 	public function login(){
-		$this->googleApi->fetchAccessTokenWithAuthCode($_GET['code']);
+		$token = $this->googleApi->fetchAccessTokenWithAuthCode($_GET['code']);
+		var_dump($token);die;
 	}
 	
 	public function getProfile(){
 		$oauth2 = new \Google_Service_Oauth2($this->googleApi);
+		$plus = new \Google_Service_Plus($this->googleApi);
+
+		$me = $plus->people->get('me');
 			
-		$user = $oauth2->userinfo->get();
-		var_dump($user);die;
+		if(!isset($me['id'])) throw new \Exception('User does not exist');
 		
 		$data = [
 			'social_id'	=>$me['id'],
@@ -60,6 +63,7 @@ class Google extends Base{
 			$data['picture'] = str_replace('sz=50','sz=200', $me['image']['url']);
 		}
 	
+		$user = $oauth2->userinfo->get();
 		if(isset($user['email'])) $data['email'] = $user['email'];
 
 		return $data;
