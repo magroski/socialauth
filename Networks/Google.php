@@ -33,7 +33,7 @@ class Google extends Base{
 	
 	public function getSocialLoginUrl(){
 		$this->googleApi->setRedirectUri($this->callbackUrl);
-		return $this->googleApi->createAuthUrl();
+		return $this->googleApi->createAuthUrl(['https://www.googleapis.com/auth/plus.me','https://www.googleapis.com/auth/userinfo.email']);
 	}
 	
 	/**
