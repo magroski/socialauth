@@ -24,8 +24,8 @@ class Wrapper{
 	 * @throws \Exception
 	 */
 	public function __construct(string $socialNetworkName, array $configs){
-		if(!isset($configs['key']) || !isset($configs['secret'])){
-			throw new \Exception('The configuration array does not contain the element(s) "key" and/or "secret"');
+		if(!isset($configs['key']) || !isset($configs['secret']) || !isset($configs['callback'])){
+			throw new \Exception('The configuration array does not contain the element(s) "key" and/or "secret"  and/or "callback"');
 		}
 		
 		switch($socialNetworkName){
