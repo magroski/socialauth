@@ -28,11 +28,12 @@ class Google extends Base{
 		$this->googleApi = new \Google_Client([
 			'client_id'		=> $configs['key'],
 			'client_secret'	=> $configs['secret'],
+			'redirect_uri'	=> $configs['callback'],
 		]);
 	}
 	
 	public function getSocialLoginUrl(){
-		$this->googleApi->setRedirectUri($this->callbackUrl);
+		$this->googleApi->setRedirectUri();
 		return $this->googleApi->createAuthUrl(['https://www.googleapis.com/auth/plus.me','https://www.googleapis.com/auth/userinfo.email']);
 	}
 	
@@ -43,7 +44,6 @@ class Google extends Base{
 	 */
 	public function login(){
 		$token = $this->googleApi->fetchAccessTokenWithAuthCode($_GET['code']);
-		var_dump($token);die;
 	}
 	
 	public function getProfile(){
