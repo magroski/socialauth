@@ -42,8 +42,7 @@ class Google extends Base{
 	 * @see \SocialAuth\Networks\Base::login()
 	 */
 	public function login(){
-		$token = $this->googleApi->fetchAccessTokenWithAuthCode($_GET['code']);
-		$this->googleApi->setAccessToken($token);
+		$this->googleApi->fetchAccessTokenWithAuthCode($_GET['code']);
 	}
 	
 	public function getProfile(){
