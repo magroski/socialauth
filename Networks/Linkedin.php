@@ -42,7 +42,7 @@ class Linkedin extends Base{
 	 * @see \SocialAuth\Networks\Base::login()
 	 */
 	public function login(){
-		$token = $li->getAccessToken($_REQUEST['code']);
+		$token = $this->linkedinApi->getAccessToken($_REQUEST['code']);
 		$this->linkedinApi->setAccessToken($token);
 	}
 	
