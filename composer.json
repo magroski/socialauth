@@ -1,18 +1,22 @@
 {
-    "name": "tfy/SocialAuth",
-    "description": "Talentify simple social authentication library",
+    "name": "magroski/SocialAuth",
+    "description": "Simple PHP wrapper for social authentication. Supports Facebook, Google & Linkedin",
     "type": "library",
-    "license": "proprietary",
+    "keywords": [
+        "Social Login",
+        "Auth"
+    ],
+    "license": "MIT",
     "authors": [
         {
+            "name": "Lucas Magroski",
+            "email": "magroski@gmail.com"
+        },
+        {
             "name": "Tasso Gama",
-            "email": "tasso@talentify.io"
+            "email": "tasso.gama@gmail.com"
         }
     ],
-    "dist":{
-        "url": "git@github.com:talentify/SocialAuth.git",
-        "type": "git"
-    },
     "autoload": {
         "psr-4": {
             "SocialAuth\\": "/"
@@ -20,8 +24,9 @@
     },
     "minimum-stability": "stable",
     "require": {
-    	"facebook/graph-sdk" : "~5.0",
-        "linkedinapi/linkedin": "^1.1",
+        "php": "^7.0",
+        "facebook/graph-sdk": "~5.0",
+        "linkedin/linkedin": "^1.1",
         "google/apiclient": "^2.1"
     }
 }
