@@ -1,5 +1,5 @@
 {
-    "name": "magroski/SocialAuth",
+    "name": "magroski/socialauth",
     "description": "Simple PHP wrapper for social authentication. Supports Facebook, Google & Linkedin",
     "type": "library",
     "keywords": [
