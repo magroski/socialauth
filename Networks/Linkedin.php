@@ -43,7 +43,7 @@ class Linkedin extends Base{
 	 */
 	public function login(){
 		if(!isset($_REQUEST['code'])){
-			throw new Exception('No code returned on LinkedIn access request',1);
+			throw new \Exception('No code returned on LinkedIn access request',1);
 		}
 		$token = $this->linkedinApi->getAccessToken($_REQUEST['code']);
 		$this->linkedinApi->setAccessToken($token);
