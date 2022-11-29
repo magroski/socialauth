@@ -24,7 +24,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.0",
+        "php": "^7.0 || ^8",
         "facebook/graph-sdk": "~5.0",
         "linkedinapi/linkedin": "^1.1",
         "google/apiclient": "^2.1"
